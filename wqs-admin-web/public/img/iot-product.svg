@@ -1,0 +1,21 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="prodTop" x1="8" y1="5" x2="56" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A9D4FF"/>
+      <stop offset="1" stop-color="#6FA9FF"/>
+    </linearGradient>
+    <linearGradient id="prodLeft" x1="8" y1="18.5" x2="32" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5E9BFB"/>
+      <stop offset="1" stop-color="#3E78F0"/>
+    </linearGradient>
+    <linearGradient id="prodRight" x1="32" y1="18.5" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3C74E8"/>
+      <stop offset="1" stop-color="#2056D6"/>
+    </linearGradient>
+  </defs>
+  <path d="M32 5 L56 18.5 L32 32 L8 18.5 Z" fill="url(#prodTop)" stroke="#6FA9FF" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M8 18.5 L32 32 L32 56 L8 42.5 Z" fill="url(#prodLeft)" stroke="#3E78F0" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M56 18.5 L32 32 L32 56 L56 42.5 Z" fill="url(#prodRight)" stroke="#2056D6" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M32 10.5 L46.5 18.5 L32 26.5 L17.5 18.5 Z" fill="#FFFFFF" opacity="0.16"/>
+  <path d="M12 21.5 L28.5 30.5 L28.5 50.5 L12 41.5 Z" fill="#FFFFFF" opacity="0.08"/>
+</svg>

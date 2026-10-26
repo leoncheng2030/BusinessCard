@@ -1,0 +1,43 @@
+
+package ${packageName}.${moduleName}.modular.${busName}.entity;
+
+import com.baomidou.mybatisplus.annotation.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.Setter;
+import java.math.BigDecimal;
+import java.util.Date;
+
+/**
+ * ${subFunctionName}实体
+ *
+ * @author ${authorName}
+ * @date ${genTime}
+ **/
+@Getter
+@Setter
+@TableName("${subDbTable}")
+public class ${subClassName} {
+
+    <% for(var i = 0; i < subConfigList.~size; i++) { %>
+    /** ${subConfigList[i].fieldRemark} */
+    <% if(subConfigList[i].needTableId) { %>
+    @TableId
+    <% } else { %><% } %>
+    @Schema(description = "${subConfigList[i].fieldRemark}")
+    <% if(subConfigList[i].needAutoInsert) { %>
+    @TableField(fill = FieldFill.INSERT)
+    <% } else { %><% } %>
+    <% if(subConfigList[i].needAutoUpdate) { %>
+    @TableField(fill = FieldFill.UPDATE)
+    <% } else { %><% } %>
+    <% if(subConfigList[i].needLogicDelete) { %>
+    @TableLogic
+    @TableField(fill = FieldFill.INSERT)
+    <% } else { %><% } %>
+    private ${subConfigList[i].fieldJavaType} ${subConfigList[i].fieldNameCamelCase};
+    <% if(i == subConfigList.~size - 1) { %><% } else { %>
+
+    <% } %>
+    <% } %>
+}

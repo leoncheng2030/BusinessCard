@@ -1,0 +1,110 @@
+
+package vip.wqs.sys.modular.resource.controller;
+
+import cn.dev33.satoken.annotation.SaCheckPermission;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotEmpty;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import vip.wqs.common.annotation.CommonLog;
+import vip.wqs.common.pojo.CommonResult;
+import vip.wqs.sys.modular.resource.entity.SysModule;
+import vip.wqs.sys.modular.resource.param.module.SysModuleAddParam;
+import vip.wqs.sys.modular.resource.param.module.SysModuleEditParam;
+import vip.wqs.sys.modular.resource.param.module.SysModuleIdParam;
+import vip.wqs.sys.modular.resource.param.module.SysModulePageParam;
+import vip.wqs.sys.modular.resource.service.SysModuleService;
+
+import javax.validation.Valid;
+import java.util.List;
+
+/**
+ * 模块控制器
+ *
+ * @author jetox
+ * @date 2022/6/27 14:12
+ **/
+@Tag(name = "模块控制器")
+@RestController
+@Validated
+public class SysModuleController {
+
+    @Resource
+    private SysModuleService sysModuleService;
+
+    /**
+     * 获取模块分页
+     *
+     * @author jetox
+     * @date 2022/4/24 20:00
+     */
+    @Operation(summary = "获取模块分页")
+    @GetMapping("/sys/module/page")
+    public CommonResult<Page<SysModule>> page(SysModulePageParam sysModulePageParam) {
+        return CommonResult.data(sysModuleService.page(sysModulePageParam));
+    }
+
+    /**
+     * 添加模块
+     *
+     * @author jetox
+     * @date 2022/4/24 20:47
+     */
+    @Operation(summary = "添加模块")
+    @CommonLog("添加模块")
+    @SaCheckPermission("/sys/module/add")
+    @PostMapping("/sys/module/add")
+    public CommonResult<String> add(@RequestBody @Valid SysModuleAddParam sysModuleAddParam) {
+        sysModuleService.add(sysModuleAddParam);
+        return CommonResult.ok();
+    }
+
+    /**
+     * 编辑模块
+     *
+     * @author jetox
+     * @date 2022/4/24 20:47
+     */
+    @Operation(summary = "编辑模块")
+    @CommonLog("编辑模块")
+    @SaCheckPermission("/sys/module/edit")
+    @PostMapping("/sys/module/edit")
+    public CommonResult<String> edit(@RequestBody @Valid SysModuleEditParam sysModuleEditParam) {
+        sysModuleService.edit(sysModuleEditParam);
+        return CommonResult.ok();
+    }
+
+    /**
+     * 删除模块
+     *
+     * @author jetox
+     * @date 2022/4/24 20:00
+     */
+    @Operation(summary = "删除模块")
+    @CommonLog("删除模块")
+    @SaCheckPermission("/sys/module/delete")
+    @PostMapping("/sys/module/delete")
+    public CommonResult<String> delete(@RequestBody @Valid @NotEmpty(message = "集合不能为空")
+                                       List<SysModuleIdParam> sysModuleIdParamList) {
+        sysModuleService.delete(sysModuleIdParamList);
+        return CommonResult.ok();
+    }
+
+    /**
+     * 获取模块详情
+     *
+     * @author jetox
+     * @date 2022/4/24 20:00
+     */
+    @Operation(summary = "获取模块详情")
+    @GetMapping("/sys/module/detail")
+    public CommonResult<SysModule> detail(@Valid SysModuleIdParam sysModuleIdParam) {
+        return CommonResult.data(sysModuleService.detail(sysModuleIdParam));
+    }
+}

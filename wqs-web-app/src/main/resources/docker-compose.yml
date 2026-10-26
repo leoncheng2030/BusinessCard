@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  wqs-web-app:
+    build: 
+      context: ../../../
+      dockerfile: Dockerfile
+    image: wqs-web-app:latest
+    container_name: wqs-web-app
+    ports:
+      - "82:82"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - MYSQL_HOST=wqs-mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DB=wqs
+      - MYSQL_USER=root
+      - MYSQL_PWD=12345678
+      - REDIS_HOST=wqs-redis
+      - REDIS_PORT=6379
+      - REDIS_PWD=
+      - REDIS_DB=1
+    depends_on:
+      - wqs-mysql
+      - wqs-redis
+    networks:
+      - wqs-network
+
+  wqs-mysql:
+    image: mysql:8.0
+    container_name: wqs-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=wqs
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - wqs-network
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  wqs-redis:
+    image: redis:7.0
+    container_name: wqs-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - wqs-network
+    command: redis-server --appendonly yes
+
+networks:
+  wqs-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+  redis-data:

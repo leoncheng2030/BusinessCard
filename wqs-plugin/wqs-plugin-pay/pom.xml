@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>vip.wqs</groupId>
+        <artifactId>wqs-plugin</artifactId>
+        <version>3.0.0</version>
+    </parent>
+
+    <artifactId>wqs-plugin-pay</artifactId>
+    <packaging>jar</packaging>
+    <description>支付插件（支付宝/微信统一支付能力）</description>
+
+    <dependencies>
+        <!-- 每个插件都要引入自己的对外接口 -->
+        <dependency>
+            <groupId>vip.wqs</groupId>
+            <artifactId>wqs-plugin-pay-api</artifactId>
+        </dependency>
+
+        <!-- 引入开发工具接口，用于支付凭证参数配置 -->
+        <dependency>
+            <groupId>vip.wqs</groupId>
+            <artifactId>wqs-plugin-dev-api</artifactId>
+        </dependency>
+
+        <!-- 支付宝官方SDK -->
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+        </dependency>
+
+        <!-- 微信支付SDK（WxJava） -->
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-pay</artifactId>
+        </dependency>
+    </dependencies>
+</project>

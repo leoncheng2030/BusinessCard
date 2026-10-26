@@ -1,0 +1,34 @@
+
+package ${packageName}.${moduleName}.modular.${busName}.param;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.Setter;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.util.Date;
+
+/**
+ * ${subFunctionName}添加参数
+ *
+ * @author ${authorName}
+ * @date ${genTime}
+ **/
+@Getter
+@Setter
+public class ${subClassName}AddParam {
+
+    <% for(var i = 0; i < subConfigList.~size; i++) { %>
+    <% if(subConfigList[i].needAdd) { %>
+    /** ${subConfigList[i].fieldRemark} */
+    @Schema(description = "${subConfigList[i].fieldRemark}"<% if(subConfigList[i].required) { %>, requiredMode = Schema.RequiredMode.REQUIRED<% } %>)
+    <% if(subConfigList[i].required) { %>
+    <% if(subConfigList[i].fieldJavaType == 'String') { %>@NotBlank<% } else { %>@NotNull<% } %>(message = "${subConfigList[i].fieldNameCamelCase}不能为空")
+    <% } else { %><% } %>
+    private ${subConfigList[i].fieldJavaType} ${subConfigList[i].fieldNameCamelCase};
+
+    <% } %>
+    <% } %>
+}

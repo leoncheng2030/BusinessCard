@@ -1,0 +1,52 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+target/
+
+# eclipse
+.settings/
+.classpath
+.project
+logs/
+
+# idea
+.idea/
+*.iml
+.murphy.yml
+
+*velocity.log*
+
+### STS ###
+.apt_generated
+.factorypath
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.ipr
+*.log
+tmp/
+
+### Node / Frontend ###
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+### OS ###
+.DS_Store
+Thumbs.db
+
+### IDE / Local ###
+.qoder/
+.enjoy-iot-ref/
+.jetlinks-ref/
+
+### 客户交付物（不入框架仓库） ###
+/deliverables/
+!**/src/main/resources/lib/*.jar
+!**/allatori/**

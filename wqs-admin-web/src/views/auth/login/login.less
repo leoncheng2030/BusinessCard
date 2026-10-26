@@ -1,0 +1,167 @@
+/* ========== B端登录/注册/找回密码 表单公共样式 ========== */
+/* 壳布局样式已迁移至 LoginLayout.vue */
+
+/* ========== 语言切换（位于右侧浅色面板右上角） ========== */
+.login_config {
+	position: absolute;
+	top: 16px;
+	right: 20px;
+	z-index: 10;
+	:deep(.anticon) {
+		font-size: 18px;
+		color: rgba(0, 0, 0, 0.45);
+		cursor: pointer;
+		transition: color 0.2s;
+		&:hover {
+			color: rgba(0, 0, 0, 0.85);
+		}
+	}
+}
+
+/* ========== 表单Tabs（登录/找回密码共用） ========== */
+.login-tabs {
+	:deep(.ant-tabs-nav) {
+		margin-bottom: 20px;
+		&::before {
+			border-bottom: 1px solid #f0f0f0;
+		}
+	}
+	:deep(.ant-tabs-nav-wrap) {
+		overflow-x: auto;
+		scrollbar-width: none;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+	:deep(.ant-tabs-tab) {
+		font-size: 15px;
+		padding: 8px 0;
+		margin: 0 24px 0 0;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+
+/* ========== 表单样式 ========== */
+.field-icon {
+	color: rgba(0, 0, 0, 0.25);
+}
+
+:deep(.ant-form-item) {
+	margin-bottom: 24px;
+	position: relative;
+
+	.ant-form-item-control {
+		position: relative;
+		min-height: auto;
+	}
+
+	.ant-form-item-explain-wrapper {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		z-index: 1;
+	}
+
+	.ant-form-item-explain {
+		font-size: 12px;
+		line-height: 20px;
+		padding-top: 2px;
+		min-height: 20px;
+		transition: none !important;
+	}
+}
+
+:deep(.ant-input-affix-wrapper),
+:deep(.ant-select-selector) {
+	border-radius: 6px !important;
+	height: 40px !important;
+	display: flex;
+	align-items: center;
+}
+
+.captcha-img-wrapper {
+	height: 40px;
+	border: 1px solid #d9d9d9;
+	border-radius: 6px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: border-color 0.3s;
+
+	&:hover {
+		border-color: #1890ff;
+	}
+
+	.login-validCode-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+/* ========== 链接区域 ========== */
+.form-options {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 24px;
+
+	.links {
+		margin-left: auto;
+		display: flex;
+		align-items: center;
+
+		.forgot-link {
+			font-size: 14px;
+			color: #1890ff;
+		}
+
+		.register-link {
+			margin-left: 16px;
+		}
+	}
+}
+
+.submit-item {
+	margin-bottom: 16px !important;
+}
+
+.login-button {
+	height: 40px;
+	font-size: 16px;
+	font-weight: 500;
+	border-radius: 6px;
+}
+
+.register-footer {
+	text-align: center;
+	color: rgba(0, 0, 0, 0.45);
+	font-size: 14px;
+
+	a {
+		color: #1890ff;
+		margin-left: 4px;
+	}
+}
+
+/* ========== 前台登录入口 ========== */
+.front-login-link {
+	margin-top: 20px;
+	padding-top: 14px;
+	border-top: 1px dashed rgba(0, 0, 0, 0.08);
+	text-align: center;
+
+	a {
+		font-size: 14px;
+		color: #1890ff;
+	}
+}
+
+/* ========== 第三方登录（预留） ========== */
+.three-login-wrapper {
+	margin-top: 20px;
+	padding-top: 16px;
+	border-top: 1px solid #f0f0f0;
+}

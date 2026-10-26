@@ -1,0 +1,2 @@
+
+package vip.wqs.gen;
